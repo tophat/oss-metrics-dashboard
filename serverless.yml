@@ -1,7 +1,7 @@
 # For full config options, check the docs:
 #   https://serverless.com/framework/docs/providers/aws/guide/serverless.yml/
 
-service: oss-data-dashboard
+service: oss-metrics-dashboard
 
 provider:
   name: aws
@@ -15,10 +15,9 @@ provider:
 
 functions:
   app:
-    handler: src/app.handle_request
+    handler: src/github.handle_cron
     events:
-      - http: ANY /
-      - http: 'ANY {proxy+}'
+      - schedule: rate(1 day)
 
 package:
   exclude:
@@ -29,9 +28,6 @@ package:
 
 plugins:
   - serverless-python-requirements
-
-resources:
-  Resources: ${file(cloudformation.yml)}
 
 custom:
   pythonRequirements:

@@ -3,6 +3,7 @@ url = "https://pypi.python.org/simple"
 verify_ssl = true
 
 [packages]
+requests = "*"
 
 [dev-packages]
 pytest = "*"

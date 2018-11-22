@@ -11,7 +11,6 @@ clean:
 
 .PHONY: deploy
 deploy: clean node_modules
-	$(SERVERLESS) create_domain --stage $(STAGE) --region $(AWS_REGION)
 	$(SERVERLESS) deploy --stage $(STAGE) --region $(AWS_REGION)
 
 node_modules:
