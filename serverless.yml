@@ -1,0 +1,38 @@
+# For full config options, check the docs:
+#   https://serverless.com/framework/docs/providers/aws/guide/serverless.yml/
+
+service: oss-data-dashboard
+
+provider:
+  name: aws
+  runtime: python3.6
+  stage: ${opt:stage, 'development'} # development, production
+  region: ${opt:region, 'us-east-1'}
+  stackTags:
+    service: ${self:service} # required tag
+    Environment: ${self:provider.stage} # required tag
+    Owner: Tophat OSS # required tag
+
+functions:
+  app:
+    handler: src/app.handle_request
+    events:
+      - http: ANY /
+      - http: 'ANY {proxy+}'
+
+package:
+  exclude:
+    - '**'
+  include:
+    - 'src/**'
+    - '!src/tests/**'
+
+plugins:
+  - serverless-python-requirements
+
+resources:
+  Resources: ${file(cloudformation.yml)}
+
+custom:
+  pythonRequirements:
+    dockerizePip: non-linux
