@@ -17,7 +17,7 @@ functions:
   github:
     handler: src/github.handle_cron
     events:
-      - schedule: rate(1 day)
+      - schedule: rate(1 hour)
   npm:
     handler: src/npm.handle_cron
     events:
