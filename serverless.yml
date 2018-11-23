@@ -14,8 +14,12 @@ provider:
     Owner: Tophat OSS # required tag
 
 functions:
-  app:
+  github:
     handler: src/github.handle_cron
+    events:
+      - schedule: rate(1 day)
+  npm:
+    handler: src/npm.handle_cron
     events:
       - schedule: rate(1 day)
 
