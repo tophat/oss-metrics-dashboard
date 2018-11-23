@@ -22,6 +22,10 @@ functions:
     handler: src/npm.handle_cron
     events:
       - schedule: rate(1 day)
+  pypi:
+    handler: src/pypi.handle_cron
+    events:
+      - schedule: rate(1 day)
 
 package:
   exclude:
