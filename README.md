@@ -6,3 +6,5 @@ Scrape repo and package activity for publishing to DataDog
 
 [Internal Google Analytics dashboard](https://analytics.google.com/analytics/web/?authuser=1#/report/visitors-overview/a129741728w189001777p185493557/)
 
+[Internal Google Search Console](https://search.google.com/u/1/search-console)
+
